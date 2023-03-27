@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVASCRIPT MEMORY CARD GAME</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?">
+</head>
+
+<body>
+    <div class="dropdown"> <!--Dropdown Nav Menu code inspired by Stack Overflow (referenced in README.md)-->
+        <button class="dropbutton"><i class="fa-solid fa-bars"></i></button>
+        <div class="drop-content">
+            <a href="index.html">Home</a>
+            <a href="about.html">What is Stardew Valley?</a>
+            <a href="how-to.html">How to Play</a>
+        </div>
+    </div>
+
+    <h1>STARDEW VALLEY MEMORY GAME</h1>
+
+    <div id="highscore"> <!--Highestscore banner for local.storage-->
+        <h2>Highest Score Iridium: 
+            <span id="iridiumcount">0</span>
+        </h2>
+    </div>
+
+    <div id="iridiumboard"></div> <!--Div for the board that wil be built in CSS and Javascript and then populated with Cards by JS-->
+
+    <div class="leftbutton"> <!--Nav Buttons-->
+        <div class="button" id="break">
+          <a href="gold.html">Previous<br>Level</a>
+        </div>
+    </div>
+
+    <div class="rightbutton"> <!--Nav Buttons-->
+        <div class="button">
+          <a href="iridium.html">Play Again</a>
+        </div>
+    </div>
+
+    <div id="counters">
+    <!--Div to keep all Empty point counters to be interacted with by JavaScript-->
+      <div id="matches"><h2>Matches: <span id="matchcount">0</span></h2></div>
+      <div id="points"><h2>Points: <span id="pointcount">0</span></h2></div>
+      <div id="errors"><h2>Errors: <span id="errorcount">0</span></h2></div>
+    </div>
+
+    <div id="social-buttons">
+    <!--Links to Social Buttons-->
+        <a href="https://github.com/Pur3-MAlice" rel="noopener" aria-label="Visit My GitHub Page (opens in a new tab)" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="https://codepen.io/Pure_MAlice" rel="noopener" aria-label="Visit My Copeden Page (opens in a new tab)"target="_blank"><i class="fa-brands fa-codepen"></i></a>
+    </div>
+
+<footer>
+<!--Copyright Disclaimer-->
+    <a href="https://www.stardewvalley.net/author/concernedape/" rel="noopener" aria-label="Visit ConcernedApe's blog (opens in a new tab)" target="_blank"><img id="copyrightimg" src="assets/images/developed_by_copyright.gif" alt="ConcernedApe copyright"></a>
+    <div id="disclaimer">Disclaimer: all images belong to ConcernedApe and Stardew Valley.</div>
+</footer>
+<!---JavaScript-->
+<script src="/index.js"></script>
+<!---Font Awesome Script-->
+<script src="https://kit.fontawesome.com/9096438b6b.js" crossorigin="anonymous"></script>
+</body>
+</html>
