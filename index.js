@@ -4,7 +4,7 @@ let errors = 0;
 let matches = 0;
 let points = 0;
 
-//List of iridium Level cards cardlist inspired by Kenny Yip Coding and Code with Ania Kubów
+//List of cards cardlist inspired by Kenny Yip Coding and Code with Ania Kubów
 let cardList = [
     "/images/dustsprite",
     "/images/frostslime",
@@ -25,7 +25,7 @@ const rows = 4;
 const columns = 5;
 let firstCard;
 let secondCard;
-let iridiumScore;
+let score;
 
 /** 
  * Function to shuffle cards and start the game as soon as window is loaded
@@ -33,9 +33,9 @@ let iridiumScore;
 window.onload = function() {
     shuffleCards();
     startGame();
-    iridiumScore = localStorage.getItem('iridiumScore');
-    localStorage.getItem('iridiumScore');
-    document.getElementById("iridiumcount").innerText = iridiumScore;
+    score = localStorage.getItem('score');
+    localStorage.getItem('score');
+    document.getElementById("count").innerText = score;
 };
 
 /**
@@ -43,8 +43,6 @@ window.onload = function() {
  */ 
 function shuffleCards() { 
     pairSet = cardList.concat(cardList); //get two of each of the cards (create pairs)
-    console.log(pairSet);
-
     //shuffle the cards
     for(let i = 0; i < pairSet.length; i++) {
         const j = Math.floor(Math.random() * pairSet.length); //randomise 
@@ -52,14 +50,13 @@ function shuffleCards() {
         pairSet[i] = pairSet[j];
         pairSet[j] = temp;
     }
-    console.log(pairSet);
 }   
 
 /**
  * Function to start game play
  */
 function startGame() {
-    //arrange the board in 4x5 for the iridium expert level
+    //arrange the board in 4x5
     for (let r = 0; r < rows; r++) {
         let row = [];
         for (let c= 0; c < columns; c++) {
@@ -69,9 +66,9 @@ function startGame() {
             const card = document.createElement("img");
             card.id =r.toString() + "-" + c.toString(); // inspired by coding from Kenny Yip Coding the toString stuff esp
             card.src = cardImg + ".jpg";
-            card.classList.add("iridiumcard");
+            card.classList.add("card");
             card.addEventListener("click", selectCard);
-            document.getElementById("iridiumboard").append(card);
+            document.getElementById("board").append(card);
         }
         board.push(row);
     }
@@ -110,10 +107,7 @@ function selectCard() {
             secondCard.src = board[r][c] + ".jpg";
             setTimeout(update, 1000); //if cards aren't a match then wait one second and call the update function
         }
-        let removeShakeOne = firstCard.classList.remove("shake");
-        let removeShakeTwo = secondCard.classList.remove("shake");
-        removeShakeOne;
-        removeShakeTwo;
+
     }
 }
 
@@ -125,6 +119,10 @@ function update() {
     if (firstCard.src != secondCard.src) {
         firstCard.classList.add("shake");
         secondCard.classList.add("shake");
+        let element = document.querySelector('.shake');
+        if (element !== null) {
+            element.classList.remove('shake');
+        }
         firstCard.src ="/images/back.jpg";
         secondCard.src ="/images/back.jpg";
         errors += 1;
@@ -143,6 +141,7 @@ function update() {
     setTimeout(endGame, 500);
 }
 
+
 /**
  * Function to alert the user at the end of the game, set highscore in local storage.
  */
@@ -150,10 +149,10 @@ function endGame() {
     if (matches === cardList.length) {
         alert (`You've found all the Cards! Your Score is ${points}. Refresh to play this level again`);
      //Add score to local.storage and replace value if new score is > than old score.
-        if (points > iridiumScore) {
-            localStorage.setItem('iridiumScore', points);
-            iridiumScore = localStorage.getItem('iridiumScore');
-            document.getElementById("iridiumcount").innerText = iridiumScore;
+        if (points > score) {
+            localStorage.setItem('score', points);
+            score = localStorage.getItem('score');
+            document.getElementById("count").innerText = score;
         }
     }
 }
